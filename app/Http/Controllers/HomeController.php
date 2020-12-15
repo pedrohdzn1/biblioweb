@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Libros;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        return view('home');
+        
+
+        if ($request){
+            $query = trim($request->get('search'));
+
+            $libros = Libros::where('titulo', 'LIKE', '%' . $query . '%')
+                ->orderBy('titulo', 'asc')
+                ->get();
+
+                return view('home', ['libros' => $libros, 'search' => $query]);
+        }
+
+        // $libros = Libros::all();
+        // return view('home', compact("libros"));
     }
 }

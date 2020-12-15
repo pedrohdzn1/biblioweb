@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                
                 <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
+                <div class="card-body" style="background-image:url({{url('img/fondo4.jpg')}}); background-size:cover">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" id="letras" class="col-md-4 col-form-label text-md-right text-white">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password"  id="letras" class="col-md-4 col-form-label text-md-right text-white">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -44,8 +44,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                    <label  id="letras" class="form-check-label text-white" for="remember">
+                                        {{ __('Recuérdame') }}
                                     </label>
                                 </div>
                             </div>
@@ -58,8 +58,8 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a  id="letras" class="btn btn-link text-white" href="{{ route('password.request') }}">
+                                        {{ __('¿Has olvidado tu contraseña?') }}
                                     </a>
                                 @endif
                             </div>
